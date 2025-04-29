@@ -10,9 +10,24 @@ To write a C Program to perform the basic left shift operation for 44 integer nu
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main() {
+    int num = 44;    
+    int shifts = 3;  
+
+    int result = num << shifts;
+
+    printf("The original number: %d\n", num);
+    printf("The result after left shifting %d by %d positions: %d\n", num, shifts, result);
+
+    return 0;
+}
+```
 ## OUTPUT
 
+![438225821-9cfef4bf-27f0-49ca-bb58-db74aeda2bf2](https://github.com/user-attachments/assets/d1451d82-a596-490c-995a-e915766183f1)
 
 
 
@@ -47,9 +62,32 @@ Write a C Program to check whether the two numbers are equal or not using simple
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main() {
+    int num1, num2;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+    
+    if (num1 == num2) {
+        printf("The two numbers are equal.\n");
+    } else {
+        printf("The two numbers are not equal.\n");
+    }
+
+    return 0;
+}
+```
 
 ## OUTPUT
+
+![438227138-3c4dc5a9-96dc-4821-8c6a-654d9fbd94ec](https://github.com/user-attachments/assets/a6704659-8f3b-4048-87ea-3d6f2d73b75e)
+
            
 ## RESULT
 
@@ -70,9 +108,27 @@ Write a C Program to convert the given string into lowercase.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <ctype.h>  
+int main() {
+    char str[100];
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);  
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower(str[i]);  
+    }
+
+    printf("The string in lowercase: %s", str);
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
+![438228223-22e942bb-a410-4572-a36c-02083c8a4e9d](https://github.com/user-attachments/assets/fc5ffdcf-c323-4ebe-94ec-42df74dec179)
 
 
 
@@ -95,10 +151,40 @@ Write a C Program to count the total number of words in a given string using do 
 6.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <ctype.h>  
+int main() {
+    char str[100];
+    int count = 0, i = 0;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    do {
+        
+        while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n') {
+            i++;
+        }
+
+        if (str[i] != '\0') {
+            count++;  
+            while (str[i] != ' ' && str[i] != '\0' && str[i] != '\t' && str[i] != '\n') {
+                i++;
+            }
+        }
+    } while (str[i] != '\0');  
+
+    printf("Total number of words: %d\n", count);
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
 
+![438229495-58c953cc-dc98-460d-a22b-8c58be982c9f](https://github.com/user-attachments/assets/ab98c652-33c2-447b-a28a-2f6f60391f3d)
 
 
 
@@ -129,10 +215,56 @@ Step 7: After the loop, check the value of flag:
 Step 8: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+
+int compareStrings(const char *str1, const char *str2) {
+   
+    int i = 0;
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] > str2[i]) {
+            return 1;
+        } else if (str1[i] < str2[i]) {
+            return -1;
+        }
+        i++;
+    }
+
+    if (str1[i] == '\0' && str2[i] == '\0') {
+        return 0;
+    } else if (str1[i] == '\0') {
+        return -1;
+    } else {
+        return 1;
+    }
+}
+
+int main() {
+    char string1[100], string2[100];
+
+    printf("Enter the first string: ");
+    scanf("%99s", string1); 
+    printf("Enter the second string: ");
+    scanf("%99s", string2); 
+    int result = compareStrings(string1, string2);
+
+    if (result == 0) {
+        printf("The strings are equal.\n");
+    } else if (result > 0) {
+        printf("'%s' is lexicographically greater than '%s'.\n", string1, string2);
+    } else {
+        printf("'%s' is lexicographically smaller than '%s'.\n", string1, string2);
+    }
+
+    return 0;
+}
+
+```
 
 
 ## OUTPUT
- 
+ ![438232428-d35efe77-444e-4890-9ff6-f1b7ef195d68](https://github.com/user-attachments/assets/9fa2c041-a57b-4c1c-8f8b-dc7543423878)
+
 
 ## RESULT
 Thus the C Program to compare two strings without using strcmp() has been executed successfully.
